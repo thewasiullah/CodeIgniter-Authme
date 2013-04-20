@@ -17,8 +17,8 @@ class Authme {
 	public function __construct()
 	{
 		if(!file_exists($path = dirname(__FILE__) . '/../vendor/PasswordHash.php')){
-            show_error('The phpass class file was not found.');
-        }
+			show_error('The phpass class file was not found.');
+		}
 		$this->CI =& get_instance();
 
 		$this->CI->load->database();
@@ -27,7 +27,7 @@ class Authme {
 		$this->CI->config->load('authme');
 		
 		include($path);
-        $this->PasswordHash = new PasswordHash(8, $this->CI->config->item('authme_portable_hashes'));
+		$this->PasswordHash = new PasswordHash(8, $this->CI->config->item('authme_portable_hashes'));
 	}
 	
 	public function logged_in()
@@ -37,19 +37,19 @@ class Authme {
 	
 	public function login($email, $password)
 	{
-	    $user = $this->CI->authme_model->get_user_by_email($email);
-	    if($user){
-	        if($this->PasswordHash->CheckPassword($password, $user->password)){
-    	        unset($user->password);
-    	        $this->CI->session->set_userdata(array(
-    	            'logged_in' => true,
-    	            'user' => $user
-    	        ));
-    	        $this->CI->authme_model->update_user($user->id, array('last_login' => date('Y-m-d H:i:s')));
-    	        return true;
-	        }
-	    }
-	    
+		$user = $this->CI->authme_model->get_user_by_email($email);
+		if($user){
+			if($this->PasswordHash->CheckPassword($password, $user->password)){
+				unset($user->password);
+				$this->CI->session->set_userdata(array(
+					'logged_in' => true,
+					'user' => $user
+				));
+				$this->CI->authme_model->update_user($user->id, array('last_login' => date('Y-m-d H:i:s')));
+				return true;
+			}
+		}
+		 
 		return false;
 	}
 	
@@ -64,12 +64,12 @@ class Authme {
 	
 	public function signup($email, $password)
 	{
-	    $user = $this->CI->authme_model->get_user_by_email($email);
-	    if($user) return false;
-	    
-    	$password = $this->PasswordHash->HashPassword($password);
-    	$this->CI->authme_model->create_user($email, $password);
-    	return true;
+		$user = $this->CI->authme_model->get_user_by_email($email);
+		if($user) return false;
+		 
+		$password = $this->PasswordHash->HashPassword($password);
+		$this->CI->authme_model->create_user($email, $password);
+		return true;
 	}
 	
 	public function reset_password($user_id, $new_password)

@@ -41,8 +41,8 @@ class Authme_model extends CI_Model {
 	
 	public function get_users($order_by = 'id', $order = 'asc', $limit = 0, $offset = 0)
 	{
-	    $this->db->order_by($order_by, $order); 
-	    if($limit) $this->db->limit($limit, $offset);
+		$this->db->order_by($order_by, $order); 
+		if($limit) $this->db->limit($limit, $offset);
 		$query = $this->db->get($this->users_table);
 		return $query->result();
 	}
