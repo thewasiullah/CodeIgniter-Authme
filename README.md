@@ -43,4 +43,4 @@ Credits
 
 The CodeIgniter Authme library was created by [Gilbert Pellegrom](http://gilbert.pellegrom.me) from [Dev7studios](http://dev7studios.com). Released under the MIT license.
 
-Please contribute by [reporting bugs](CodeIgniter-Authme/issues) and submitting [pull requests](CodeIgniter-Authme/pulls).
+Please contribute by [reporting bugs](https://github.com/gilbitron/CodeIgniter-Authme/issues) and submitting [pull requests](https://github.com/gilbitron/CodeIgniter-Authme/pulls).
